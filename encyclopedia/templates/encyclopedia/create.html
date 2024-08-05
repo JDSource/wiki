@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create Your Wiki Entry
+{% endblock %}
+
+{% block body %}
+    <h1>Create Your Wiki Entry</h1>
+   <form action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+        <div class="formgroup">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div class="formgroup">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+        </div>
+        <button type="submit">Save</button>
+   </form>
+   {% if error %}
+        <div> {{ error }}</div>
+    {% endif %}
+{% endblock %}
